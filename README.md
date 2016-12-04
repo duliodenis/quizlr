@@ -1,7 +1,9 @@
 # Quizlr
 An iOS 10 / Swift 3 based Quiz App designed to provide a foundation to fun quizzes.
 
-![](art/screenshot/quizlr00.gif?raw=true)
+![](art/screenshot/quizlr01.gif?raw=true)
+
+All UI is programmatically implemented with no Interface Builder. 
 
 ### Contributing
 See [CONTRIBUTING](CONTRIBUTING.md).

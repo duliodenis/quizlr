@@ -12,6 +12,8 @@
 		6C46087C1DF39E2800622226 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C46087A1DF39E2800622226 /* Main.storyboard */; };
 		6C46087E1DF39E2800622226 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C46087D1DF39E2800622226 /* Assets.xcassets */; };
 		6C4608811DF39E2800622226 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C46087F1DF39E2800622226 /* LaunchScreen.storyboard */; };
+		6C46088F1DF4AE1E00622226 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C46088E1DF4AE1E00622226 /* RoundedButton.swift */; };
+		6C4608911DF4B2B600622226 /* RoundedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4608901DF4B2B600622226 /* RoundedLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		6C46087D1DF39E2800622226 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6C4608801DF39E2800622226 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6C4608821DF39E2800622226 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6C46088E1DF4AE1E00622226 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundedButton.swift; path = Custom/RoundedButton.swift; sourceTree = "<group>"; };
+		6C4608901DF4B2B600622226 /* RoundedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundedLabel.swift; path = Custom/RoundedLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,8 @@
 		6C46088B1DF3A3E100622226 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				6C46088E1DF4AE1E00622226 /* RoundedButton.swift */,
+				6C4608901DF4B2B600622226 /* RoundedLabel.swift */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -185,6 +191,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C4608791DF39E2800622226 /* MenuViewController.swift in Sources */,
+				6C46088F1DF4AE1E00622226 /* RoundedButton.swift in Sources */,
+				6C4608911DF4B2B600622226 /* RoundedLabel.swift in Sources */,
 				6C4608771DF39E2800622226 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,6 +357,7 @@
 				6C4608871DF39E2800622226 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
