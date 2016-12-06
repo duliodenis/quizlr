@@ -58,7 +58,66 @@ class MenuViewController: UIViewController {
     // MARK: - Method to define autolayout constraints and position all controls in the view
     
     func layoutView() {
+        // turn off auto resizing since we'll be handling that
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        // add contentView to the screen
+        view.addSubview(contentView)
         
+        // add the logo view
+        // turn off its auto resizing
+        logoView.translatesAutoresizingMaskIntoConstraints = false
+        // add the logo to the contentView
+        contentView.addSubview(logoView)
+        
+        // add the four buttons to the contentView
+        buttonView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(buttonView)
+        
+        // iterate through the titles enumeration
+        for (index, title) in titles.enumerated() {
+            // define a new instance of a RoundedButton button
+            let button = RoundedButton()
+            // turn off its autoresizing
+            button.translatesAutoresizingMaskIntoConstraints = false
+            // add to the buttonView
+            buttonView.addSubview(button)
+            // set various properties such as background color, font, and title
+            button.backgroundColor = UIColor(red: 52/255, green: 152/255, blue: 219/255, alpha: 1.0)
+            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+            button.setTitle(title, for: .normal)
+            // set the button's tag to be the index
+            button.tag = index
+            gameButtons.append(button)
+        }
+        
+        // add the score view to the contentView
+        scoreView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(scoreView)
+        
+        // add the title, recent score, and high score labels to the contentView
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        recentScoreLabel.translatesAutoresizingMaskIntoConstraints = false
+        highScoreLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        scoreView.addSubview(titleLabel)
+        scoreView.addSubview(recentScoreLabel)
+        scoreView.addSubview(highScoreLabel)
+        
+        // set the label properties
+        titleLabel.textAlignment = .center
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 30)
+        titleLabel.textColor = UIColor.white
+        
+        recentScoreLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        recentScoreLabel.textColor = UIColor.white
+        
+        highScoreLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        highScoreLabel.textColor = UIColor.white
+        
+        // Set some preliminary values
+        titleLabel.text = "Multiple Choice"
+        recentScoreLabel.text = "Recent: 0"
+        highScoreLabel.text = "Highscore: 0"
     }
     
 }
