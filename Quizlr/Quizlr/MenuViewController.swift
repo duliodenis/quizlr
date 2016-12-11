@@ -118,6 +118,82 @@ class MenuViewController: UIViewController {
         titleLabel.text = "Multiple Choice"
         recentScoreLabel.text = "Recent: 0"
         highScoreLabel.text = "Highscore: 0"
+        
+        // Add constraints
+        let constraints = [
+            // have the contentView use the entire view
+            contentView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 8.0),
+            contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            // logoView: top with some padding, centered
+            logoView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20.0),
+            logoView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.6),
+            logoView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.2),
+            logoView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            
+            // buttonView
+            buttonView.topAnchor.constraint(equalTo: logoView.bottomAnchor, constant: 20.0),
+            buttonView.bottomAnchor.constraint(equalTo: scoreView.topAnchor, constant: -20.0),
+            buttonView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.6),
+            buttonView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            
+            // gameButton 1
+            gameButtons[0].topAnchor.constraint(equalTo: buttonView.topAnchor, constant: 20.0),
+            gameButtons[0].bottomAnchor.constraint(equalTo: gameButtons[1].topAnchor, constant: -8.0),
+            gameButtons[0].leadingAnchor.constraint(equalTo: buttonView.leadingAnchor),
+            gameButtons[0].trailingAnchor.constraint(equalTo: buttonView.trailingAnchor),
+            
+            // gameButton 2
+            gameButtons[1].bottomAnchor.constraint(equalTo: gameButtons[2].topAnchor, constant: -8.0),
+            gameButtons[1].leadingAnchor.constraint(equalTo: buttonView.leadingAnchor),
+            gameButtons[1].trailingAnchor.constraint(equalTo: buttonView.trailingAnchor),
+            
+            // gameButton 3
+            gameButtons[2].bottomAnchor.constraint(equalTo: gameButtons[3].topAnchor, constant: -8.0),
+            gameButtons[2].leadingAnchor.constraint(equalTo: buttonView.leadingAnchor),
+            gameButtons[2].trailingAnchor.constraint(equalTo: buttonView.trailingAnchor),
+            
+            // gameButton 4
+            gameButtons[3].bottomAnchor.constraint(equalTo: buttonView.bottomAnchor, constant: -8.0),
+            gameButtons[3].leadingAnchor.constraint(equalTo: buttonView.leadingAnchor),
+            gameButtons[3].trailingAnchor.constraint(equalTo: buttonView.trailingAnchor),
+            
+            // gameButtons height
+            gameButtons[0].heightAnchor.constraint(equalTo: gameButtons[1].heightAnchor),
+            gameButtons[1].heightAnchor.constraint(equalTo: gameButtons[2].heightAnchor),
+            gameButtons[2].heightAnchor.constraint(equalTo: gameButtons[3].heightAnchor),
+            
+            // scoreView
+            scoreView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -40.0),
+            scoreView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.6),
+            scoreView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.3),
+            scoreView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            
+            // title Label
+            titleLabel.topAnchor.constraint(equalTo: scoreView.topAnchor, constant: 8.0),
+            titleLabel.leadingAnchor.constraint(equalTo: scoreView.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: scoreView.trailingAnchor),
+            titleLabel.bottomAnchor.constraint(equalTo: recentScoreLabel.topAnchor, constant: -8.0),
+            
+            // recent Score Label
+            recentScoreLabel.leadingAnchor.constraint(equalTo: scoreView.leadingAnchor),
+            recentScoreLabel.trailingAnchor.constraint(equalTo: scoreView.trailingAnchor),
+            recentScoreLabel.bottomAnchor.constraint(equalTo: highScoreLabel.topAnchor, constant: -8.0),
+            
+            // high Score Label
+            highScoreLabel.leadingAnchor.constraint(equalTo: scoreView.leadingAnchor),
+            highScoreLabel.trailingAnchor.constraint(equalTo: scoreView.trailingAnchor),
+            highScoreLabel.bottomAnchor.constraint(equalTo: scoreView.bottomAnchor, constant: -8.0),
+            
+            // title and recent score heights
+            titleLabel.heightAnchor.constraint(equalTo: recentScoreLabel.heightAnchor),
+            recentScoreLabel.heightAnchor.constraint(equalTo: highScoreLabel.heightAnchor)
+        ]
+        
+        // activate the constraints
+        NSLayoutConstraint.activate(constraints)
     }
     
 }
