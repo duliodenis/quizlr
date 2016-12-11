@@ -34,6 +34,21 @@ class MenuViewController: UIViewController {
         "Emoji Riddle"
     ]
     
+    // private integer array for recent scores and high scores
+    private var recentScores = [Int]()
+    private var highScores = [Int]()
+    
+    // private int to keep track of the score
+    private var scoreIndex = 0
+    
+    // private instance of time
+    private var timer = Timer()
+    
+    // private variables for horizontal constraints - explicitly unwrapped
+    private var midXConstraints: [NSLayoutConstraint]!
+    private var leftConstraints: [NSLayoutConstraint]!
+    private var rightConstraint: [NSLayoutConstraint]!
+    
     
     // MARK: - View Lifecycle Methods
     
@@ -52,6 +67,27 @@ class MenuViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         // hide the navigation bar
         navigationController?.navigationBar.isHidden = true
+        updateScore()
+    }
+    
+    
+    // MARK: - Update Game Score
+    
+    func updateScore() {
+        // fill the recent Score array with values in the user default
+        recentScores = [
+            UserDefaults.standard.integer(forKey: multipleChoiceRecentScoreIdentifier),
+            UserDefaults.standard.integer(forKey: imageQuizRecentScoreIdentifier),
+            UserDefaults.standard.integer(forKey: rightWrongRecentScoreIdentifier),
+            UserDefaults.standard.integer(forKey: emojiRecentScoreIdentifier)
+        ]
+        
+        highScores = [
+            UserDefaults.standard.integer(forKey: multipleChoiceHighScoreIdentifier),
+            UserDefaults.standard.integer(forKey: imageQuizHighScoreIdentifier),
+            UserDefaults.standard.integer(forKey: rightWrongHighScoreIdentifier),
+            UserDefaults.standard.integer(forKey: emojiHighScoreIdentifier)
+        ]
     }
     
     
@@ -68,6 +104,8 @@ class MenuViewController: UIViewController {
         logoView.translatesAutoresizingMaskIntoConstraints = false
         // add the logo to the contentView
         contentView.addSubview(logoView)
+        // add the image to the logoView
+        logoView.image = UIImage(named: "logo")
         
         // add the four buttons to the contentView
         buttonView.translatesAutoresizingMaskIntoConstraints = false
@@ -115,9 +153,9 @@ class MenuViewController: UIViewController {
         highScoreLabel.textColor = UIColor.white
         
         // Set some preliminary values
-        titleLabel.text = "Multiple Choice"
-        recentScoreLabel.text = "Recent: 0"
-        highScoreLabel.text = "Highscore: 0"
+        titleLabel.text = titles[scoreIndex]
+        recentScoreLabel.text = "Recent: " + String(UserDefaults.standard.integer(forKey: multipleChoiceRecentScoreIdentifier))
+        highScoreLabel.text = "Highscore: " + String(UserDefaults.standard.integer(forKey: multipleChoiceHighScoreIdentifier))
         
         // Add constraints
         let constraints = [
@@ -169,7 +207,6 @@ class MenuViewController: UIViewController {
             scoreView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -40.0),
             scoreView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.6),
             scoreView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.3),
-            scoreView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             
             // title Label
             titleLabel.topAnchor.constraint(equalTo: scoreView.topAnchor, constant: 8.0),
@@ -192,8 +229,44 @@ class MenuViewController: UIViewController {
             recentScoreLabel.heightAnchor.constraint(equalTo: highScoreLabel.heightAnchor)
         ]
         
-        // activate the constraints
+        // add horizontal constraints
+        midXConstraints = [scoreView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)]
+        leftConstraints = [scoreView.trailingAnchor.constraint(equalTo: contentView.leadingAnchor)]
+        rightConstraint = [scoreView.leadingAnchor.constraint(equalTo: contentView.trailingAnchor)]
+        
+        // activate the constraints, start score view at the center when activated
         NSLayoutConstraint.activate(constraints)
+        NSLayoutConstraint.activate(midXConstraints)
+        
+        // initialize the timer
+        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(nextScore), userInfo: nil, repeats: true)
+    }
+    
+    
+    // MARK: - Score Index Management
+    
+    func nextScore() {
+        scoreIndex = scoreIndex < (recentScores.count - 1) ? scoreIndex + 1 : 0
+        
+        UIView.animate(withDuration: 1.0, animations: { 
+            NSLayoutConstraint.deactivate(self.midXConstraints)
+            NSLayoutConstraint.activate(self.leftConstraints)
+            self.view.layoutIfNeeded()
+        }) { (completion: Bool) in
+            self.titleLabel.text = self.titles[self.scoreIndex]
+            self.recentScoreLabel.text = "Recent: " + String(self.recentScores[self.scoreIndex])
+            self.highScoreLabel.text = "Highscore: " + String(self.highScores[self.scoreIndex])
+            
+            NSLayoutConstraint.deactivate(self.leftConstraints)
+            NSLayoutConstraint.activate(self.rightConstraint)
+            self.view.layoutIfNeeded()
+            
+            UIView.animate(withDuration: 1.0, animations: { 
+                NSLayoutConstraint.deactivate(self.rightConstraint)
+                NSLayoutConstraint.activate(self.midXConstraints)
+                self.view.layoutIfNeeded()
+            })
+        }
     }
     
 }
