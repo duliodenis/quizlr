@@ -105,7 +105,7 @@ class MenuViewController: UIViewController {
         // add the logo to the contentView
         contentView.addSubview(logoView)
         // add the image to the logoView
-        logoView.image = UIImage(named: "logo")
+        logoView.image = UIImage(named: "quizlr")
         
         // add the four buttons to the contentView
         buttonView.translatesAutoresizingMaskIntoConstraints = false
@@ -125,6 +125,8 @@ class MenuViewController: UIViewController {
             button.setTitle(title, for: .normal)
             // set the button's tag to be the index
             button.tag = index
+            // set the target to be the buttonHandler
+            button.addTarget(self, action: #selector(buttonHandler), for: .touchUpInside)
             gameButtons.append(button)
         }
         
@@ -240,6 +242,37 @@ class MenuViewController: UIViewController {
         
         // initialize the timer
         timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(nextScore), userInfo: nil, repeats: true)
+    }
+    
+    
+    // MARK: - Button Handler
+    
+    func buttonHandler(sender: RoundedButton) {
+        // optional View Controller variable
+        var vc: UIViewController?
+        
+        // switch on the sender
+        switch sender.tag {
+        case 0: // Multiple Choice
+            vc = MultipleChoiceViewController()
+            
+        case 1: // Image 
+            print("Image")
+            
+        case 2: // Right Wrong
+            print("Right Wrong")
+            
+        case 3: // Emoji
+            print("Emoji")
+            
+        default:
+            break
+        }
+        
+        // if we have a VC - navigate to it
+        if let newVC = vc {
+            navigationController?.pushViewController(newVC, animated: true)
+        }
     }
     
     

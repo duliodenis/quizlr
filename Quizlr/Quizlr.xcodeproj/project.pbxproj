@@ -15,6 +15,7 @@
 		6C46088F1DF4AE1E00622226 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C46088E1DF4AE1E00622226 /* RoundedButton.swift */; };
 		6C4608911DF4B2B600622226 /* RoundedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4608901DF4B2B600622226 /* RoundedLabel.swift */; };
 		6C4608931DFDE2F700622226 /* Constants+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4608921DFDE2F700622226 /* Constants+Extensions.swift */; };
+		6C4608971DFF5CD500622226 /* MultipleChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4608961DFF5CD400622226 /* MultipleChoiceViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		6C46088E1DF4AE1E00622226 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundedButton.swift; path = Custom/RoundedButton.swift; sourceTree = "<group>"; };
 		6C4608901DF4B2B600622226 /* RoundedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundedLabel.swift; path = Custom/RoundedLabel.swift; sourceTree = "<group>"; };
 		6C4608921DFDE2F700622226 /* Constants+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Constants+Extensions.swift"; path = "Custom/Constants+Extensions.swift"; sourceTree = "<group>"; };
+		6C4608961DFF5CD400622226 /* MultipleChoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MultipleChoiceViewController.swift; path = Controller/MultipleChoiceViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				6C4608781DF39E2800622226 /* MenuViewController.swift */,
+				6C4608961DFF5CD400622226 /* MultipleChoiceViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 				6C4608911DF4B2B600622226 /* RoundedLabel.swift in Sources */,
 				6C4608771DF39E2800622226 /* AppDelegate.swift in Sources */,
 				6C4608931DFDE2F700622226 /* Constants+Extensions.swift in Sources */,
+				6C4608971DFF5CD500622226 /* MultipleChoiceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
